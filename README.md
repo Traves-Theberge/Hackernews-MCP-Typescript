@@ -41,37 +41,6 @@ Then restart your MCP-compatible client (like Cursor) to connect to the server.
    - Comment statistics, top commenters, and discussion patterns
    - Example: *"Analyze the comments on story 44473319"*
 
-### 📋 Resources (12 Data Endpoints)
-
-Access structured data via URI patterns:
-
-- `hackernews://item/{id}` - Individual items (stories, comments, jobs, polls)
-- `hackernews://story/{id}` - Stories with enhanced metadata
-- `hackernews://user/{username}` - User profiles
-- `hackernews://user-stats/{username}` - User analytics
-- `hackernews://stories/top` - Top stories collection
-- `hackernews://stories/new` - New stories collection
-- `hackernews://stories/best` - Best stories collection
-- `hackernews://stories/ask` - Ask HN stories
-- `hackernews://stories/show` - Show HN stories
-- `hackernews://stories/jobs` - Job postings
-- `hackernews://comments/{id}` - Comment trees
-- `hackernews://updates` - Live updates
-
-### 🎯 Prompts (3 Analysis Templates)
-
-1. **`analyze-story`** - Comprehensive story analysis
-   - Content analysis, engagement metrics, discussion patterns
-   - Supports basic, detailed, and comprehensive analysis levels
-
-2. **`analyze-user-profile`** - User behavior analysis
-   - Activity patterns, expertise areas, community engagement
-   - Focus areas: general, expertise, engagement, influence
-
-3. **`summarize-trending-topics`** - Trending topics summary
-   - Current trends, community interests, and insights
-   - Configurable timeframes and analysis depth
-
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
@@ -321,32 +290,6 @@ The HackerNews API is provided by Y Combinator and Hacker News. The API itself i
 
 **API Endpoint**: `https://hacker-news.firebaseio.com/v0/`  
 **Documentation**: [GitHub - HackerNews/API](https://github.com/HackerNews/API)
-
-## 📜 License
-
-### MCP Server License
-
-MIT License
-
-Copyright (c) 2025 Traves Theberge <Traves.Theberge@gmail.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 ---
 
