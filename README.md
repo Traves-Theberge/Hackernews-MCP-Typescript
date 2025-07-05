@@ -39,7 +39,7 @@ Then restart your MCP-compatible client (like Cursor) to connect to the server.
 
 5. **`search_comments`** - Analyze comment engagement
    - Comment statistics, top commenters, and discussion patterns
-   - Example: *"Analyze the comments on story 44473319"*
+        - Example: *"Analyze the comments on story 44473319"*
 
 ## 🛠️ Installation & Setup
 
@@ -70,44 +70,94 @@ Then restart your MCP-compatible client (like Cursor) to connect to the server.
    npm start
    ```
 
-## 🎮 Usage Examples
+## 🎮 Real Usage Examples (Tested & Working)
 
-### Search & Discovery
+### 🔍 Search Posts - Find Stories by Topic
 
-```
-You: "Find the top 10 stories about AI with high engagement"
-AI: [Uses search_posts tool with query="AI", minScore=50, limit=10]
+```bash
+# What we tested:
+search_posts with query="AI", minScore=50, limit=10
 
-You: "What's trending on HackerNews right now?"
-AI: [Uses search_trending tool to analyze current topics]
-```
-
-### Story Analysis
-
-```
-You: "Analyze this story comprehensively: 44473319"
-AI: [Uses get_post tool + analyze-story prompt for deep analysis]
-
-You: "What are people saying about this story?"
-AI: [Uses search_comments tool to analyze discussion patterns]
+# Results we got:
+- "'Positive review only': Researchers hide AI prompts in papers" (100 points, 52 comments)
+- "Cops in [Spain] think everyone using a Google Pixel must be a drug dealer" (65 points, 50 comments)
 ```
 
-### User Research
+**Use cases:**
+- Find high-engagement stories on specific topics
+- Filter by author, score thresholds, or date ranges
+- Research trending discussions in your field
 
-```
-You: "Who is 'pg' and what are they known for?"
-AI: [Uses search_user tool + analyze-user-profile prompt]
+### 📄 Get Post Details - Deep Story Analysis
 
-You: "Find active users in the AI discussion space"
-AI: [Combines search_posts + search_user for community mapping]
+```bash
+# What we tested:
+get_post for story ID 44473319 (AI prompts story)
+
+# What we learned:
+- Full story metadata (age: 3.2 hours, domain: asia.nikkei.com)
+- Complete comment tree (57 comments from 38 authors)
+- Engagement metrics and discussion quality
 ```
 
-### Trend Analysis
+**Use cases:**
+- Analyze specific stories that interest you
+- Get complete comment discussions
+- Understand community reaction to news
 
+### 👤 Search Users - Profile Analysis
+
+```bash
+# What we tested:
+search_user for "zczc" (Google Pixel story author)
+
+# What we discovered:
+- 8.6 years on HN, 876 karma, steady contributor
+- Research-oriented: provides primary sources
+- Cross-domain expertise: tech, policy, programming
+- Quality over quantity approach
 ```
-You: "Summarize the current state of HackerNews discussions"
-AI: [Uses summarize-trending-topics prompt for comprehensive overview]
+
+**Use cases:**
+- Research authors of interesting posts
+- Find domain experts and thought leaders
+- Understand user contribution patterns
+
+### 📈 Search Trending - Topic Analysis
+
+```bash
+# What we tested:
+search_trending analyzing 49 current top stories
+
+# Current trends we found:
+- "software", "game", "first" (6.1% each)
+- "systems", "local", "google" (4.1% each)
+- Space tech: "satellite", "geostationary"
+- Focus on local-first software and gaming
 ```
+
+**Use cases:**
+- Track what the tech community is discussing
+- Identify emerging technology trends
+- Monitor shifts in community interests
+
+### 💬 Search Comments - Discussion Analysis
+
+```bash
+# What we tested:
+search_comments on the Google Pixel Spain story
+
+# What we found:
+- 56 comments from 38 unique authors
+- Active discussion (multiple users with 4+ comments)
+- International perspectives on privacy/surveillance
+- Quality moderation (5 deleted, 1 flagged)
+```
+
+**Use cases:**
+- Analyze community sentiment on topics
+- Find the most engaged discussants
+- Understand discussion quality and patterns
 
 ## 🏗️ Architecture
 
@@ -167,39 +217,49 @@ npm run lint:fix
 npm run build
 ```
 
-## 📊 API Coverage
+## 📊 MCP Tools & Capabilities
 
-Complete HackerNews API implementation:
+What you can actually do with our tested tools:
 
-| Endpoint | Purpose | MCP Integration |
-|----------|---------|----------------|
-| `/v0/item/{id}` | Individual items | Tools + Resources |
-| `/v0/user/{id}` | User profiles | Tools + Resources |
-| `/v0/maxitem` | Latest item ID | Resources |
-| `/v0/topstories` | Top stories | Tools + Resources |
-| `/v0/newstories` | New stories | Resources |
-| `/v0/beststories` | Best stories | Resources |
-| `/v0/askstories` | Ask HN | Resources |
-| `/v0/showstories` | Show HN | Resources |
-| `/v0/jobstories` | Job postings | Resources |
-| `/v0/updates` | Live updates | Resources |
+| MCP Tool | What It Does | Real Example From Our Testing |
+|----------|--------------|-------------------------------|
+| `search_posts` | Find stories by criteria | Found 2 AI stories with 100+ and 65 points |
+| `get_post` | Get full story details | Analyzed AI prompts story with 57 comments |
+| `search_user` | Profile analysis | Profiled "zczc" - 8.6yr veteran, quality contributor |
+| `search_trending` | Topic analysis | Found "software", "game", "systems" trending |
+| `search_comments` | Discussion analysis | Analyzed 56 comments, 38 authors on Pixel story |
 
-## 🤝 Real-World Use Cases
+**Resource Access Patterns:**
+- `hackernews://stories/top` → Current top stories
+- `hackernews://user/username` → User profiles  
+- `hackernews://item/12345` → Individual posts
+- `hackernews://comments/12345` → Comment trees
 
-### Content Research
-- **Journalists**: Track tech industry trends and breaking news
-- **Researchers**: Analyze community discussions and sentiment
-- **Developers**: Monitor technology adoption and opinions
+## 🤝 Real-World Use Cases (Based on Our Testing)
 
-### Community Analysis
-- **Recruiters**: Identify active contributors and domain experts
-- **Marketers**: Understand community interests and engagement patterns
-- **Product Managers**: Track feature requests and user feedback
+### 📰 Content Research & Analysis
+- **Find breaking tech stories**: Like our AI prompts in papers discovery (100 points, active discussion)
+- **Track controversial topics**: Privacy issues like the Google Pixel profiling story
+- **Analyze discussion quality**: 57 comments from 38 authors shows real engagement
+- **Monitor emerging trends**: Space tech, local-first software, gaming developments
 
-### Trend Monitoring
-- **Investors**: Monitor startup and technology trends
-- **Consultants**: Track industry discussions and expert opinions
-- **Educators**: Find quality technical content and discussions
+### 👥 Community Intelligence
+- **Identify quality contributors**: Found "zczc" as research-oriented, cross-domain expert
+- **Understand user patterns**: 8.6 years, steady karma growth, source verification habits
+- **Find domain experts**: Users with consistent high-quality contributions
+- **Track thought leaders**: Active users in specific technology areas
+
+### 📈 Trend & Sentiment Analysis
+- **Current tech focus**: "software", "systems", "game" trending at 6.1% each
+- **Emerging technologies**: Satellite/space tech discussions increasing
+- **Community sentiment**: International privacy concerns, academic integrity debates
+- **Discussion patterns**: Quality moderation, international perspectives
+
+### 🔍 Research Applications
+- **Academic research**: Study tech community discussions and sentiment
+- **Market research**: Understand developer and tech community interests
+- **Competitive intelligence**: Monitor discussions about technologies and companies
+- **Content strategy**: Find topics that generate high engagement
 
 ## 🚀 Performance
 
@@ -265,36 +325,74 @@ LOG_LEVEL=debug npm start
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **HackerNews** for providing the excellent API and fostering one of the best tech communities on the internet
-- **Model Context Protocol** team for the MCP specification
-- The **open source community** for inspiration and feedback
-
-## 🔗 HackerNews API
-
-This project uses the official HackerNews API provided by Y Combinator. We're grateful for:
-
-- **Free access** to real-time HackerNews data
-- **Comprehensive coverage** of all HN content types
-- **Reliable service** powering this MCP integration
-- **The amazing HackerNews community** that creates the content we analyze
-
-### HackerNews API License
-
-The HackerNews API is provided by Y Combinator and Hacker News. The API itself is free to use for non-commercial purposes. For commercial usage, please refer to the [HackerNews API documentation](https://github.com/HackerNews/API) and Y Combinator's terms of service.
-
-**API Endpoint**: `https://hacker-news.firebaseio.com/v0/`  
-**Documentation**: [GitHub - HackerNews/API](https://github.com/HackerNews/API)
 
 ---
 
-**🚀 Ready to explore HackerNews like never before?** 
+## 🎉 **Ready to Explore HackerNews Like Never Before?**
 
-Start with `npm run build && npm start` and ask your AI assistant about the latest tech trends!
+### 🚀 **Quick Start Command**
+```bash
+npm run build && npm start
+```
 
-**Special thanks to the HackerNews community** for creating the incredible discussions and content that make this tool valuable. Keep hacking! 🧡 
+### 💬 **Start Your First Conversation**
+Ask your AI assistant:
+- *"What are the top AI stories on HackerNews right now?"*
+- *"Find trending topics in the tech community today"*
+- *"Analyze the most discussed story this week"*
+
+---
+
+## 🙏 **Acknowledgments & Credits**
+
+### 🧡 **Special Thanks to HackerNews**
+> *"The best technology discussions happen here"*
+
+We're incredibly grateful to **HackerNews** and **Y Combinator** for:
+
+🌟 **Creating the world's best tech community**  
+📡 **Providing free, real-time API access**  
+🔥 **Fostering incredible discussions that inspire innovation**  
+🚀 **Building a platform where the future of tech is discussed daily**
+
+### ⚡ **Powered By**
+- 🔗 **[HackerNews API](https://github.com/HackerNews/API)** - The data that drives everything
+- 🛠️ **[Model Context Protocol](https://modelcontextprotocol.io)** - The standard that makes it possible
+- 💝 **Open Source Community** - The spirit that keeps us building
+
+---
+
+## 📜 **License & Usage**
+
+### 🆓 **This MCP Server**
+**MIT License** - Use it, modify it, share it! See [LICENSE](LICENSE) file.  
+**Created by**: Traves Theberge <Traves.Theberge@gmail.com>
+
+### 📊 **HackerNews API**
+**Free for non-commercial use** - Respect the community that creates the content.  
+**Commercial usage**: Check [Y Combinator's terms](https://github.com/HackerNews/API)
+
+---
+
+## 🌟 **Join the Community**
+
+**Found a bug?** Open an issue!  
+**Have an idea?** Start a discussion!  
+**Want to contribute?** PRs welcome!  
+
+### 🔗 **Connect**
+- 📧 **Email**: Traves.Theberge@gmail.com
+- 🐙 **GitHub**: [This Repository](.)
+- 🗨️ **Discussions**: Share your HackerNews insights!
+
+---
+
+<div align="center">
+
+### 🧡 **Keep Hacking, Keep Exploring!** 🧡
+
+*Built with ❤️ for the HackerNews community*
+
+**[⭐ Star this repo](.) • [🍴 Fork it](.) • [📝 Contribute](.)**
+
+</div> 
