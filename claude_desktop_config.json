@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "hackernews": {
+      "command": "node",
+      "args": ["C:/Users/trave/Desktop/Programs/Hackernews-MCP/dist/index.js"],
+      "env": {
+        "HACKERNEWS_API_BASE_URL": "https://hacker-news.firebaseio.com/v0",
+        "HACKERNEWS_API_TIMEOUT": "10000",
+        "HACKERNEWS_API_RETRY_ATTEMPTS": "3",
+        "HACKERNEWS_API_RETRY_DELAY": "1000",
+        "HACKERNEWS_CACHE_DEFAULT_TTL": "300000",
+        "HACKERNEWS_CACHE_MAX_SIZE": "1000",
+        "HACKERNEWS_CACHE_CLEANUP_INTERVAL": "600000",
+        "HACKERNEWS_LOG_LEVEL": "info"
+      }
+    }
+  }
+} 

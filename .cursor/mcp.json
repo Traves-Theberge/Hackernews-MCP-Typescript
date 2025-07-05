@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "hackernews": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "cwd": ".",
+      "env": {
+        "HACKERNEWS_API_BASE_URL": "https://hacker-news.firebaseio.com/v0",
+        "HACKERNEWS_API_TIMEOUT": "10000",
+        "CACHE_TTL_SECONDS": "300",
+        "CACHE_MAX_SIZE": "1000",
+        "LOG_LEVEL": "info"
+      }
+    }
+  }
+} 
