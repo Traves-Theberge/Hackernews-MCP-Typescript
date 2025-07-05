@@ -162,3 +162,6 @@ local/
 # Backup files
 *.backup
 *.bak 
+
+# Environment variables
+.env
